@@ -1,0 +1,52 @@
+[   
+    {"type": "Conferences",
+    "items": [{"title": "Sensor Networks TDOA Self-Calibration: 2D Complexity Analysis and Solutions",
+                "authors": "L.Ferranti, K.Åström, M.Oskarsson, J.Boutellier, J.Kannala",
+                "forum": "arXiv:2005.10298",
+                "date":"2020",
+                "notes": "accepted to ICASSP2021",
+                "link": "https://arxiv.org/abs/2005.10298",
+                "arxiv": "https://arxiv.org/abs/2005.10298",
+                "cite": "ferranti2020sensor",
+                "abstract": "Given a network of receivers and transmitters, the process of determining their positions from measured pseudoranges is known as network self-calibration. In this paper we consider 2D networks with synchronized receivers but unsynchronized transmitters and the corresponding calibration techniques, known as Time-Difference-Of-Arrival (TDOA) techniques. Despite previous work, TDOA self-calibration is computationally challenging. Iterative algorithms are very sensitive to the initialization, causing convergence issues. In this paper, we present a novel approach, which gives an algebraic solution to two previously unsolved scenarios. We also demonstrate that our solvers produce an excellent initial value for non-linear optimisation algorithms, leading to a full pipeline robust to noise."},
+                
+                {"title": "Can You Trust Your Pose? Confidence Estimation in Image-Based Localization",
+                "authors": "L.Ferranti, X.Li, J.Boutellier, J.Kannala",
+                "forum": "arXiv:2010.00347",
+                "date": "2020",
+                "notes": "accepted to ICPR 2020",
+                "link": "https://arxiv.org/abs/2010.00347",
+                "arxiv": "https://arxiv.org/abs/2010.00347",
+                "cite": "ferranti2020trust",
+                "abstract": "Camera pose estimation in large-scale environments is still an open question and, despite recent promising results, it may still fail in some situations. The research so far has focused on improving subcomponents of estimation pipelines, to achieve more accurate poses. However, there is no guarantee for the result to be correct, even though the correctness of pose estimation is critically important in several visual localization applications,such as in autonomous navigation. In this paper we bring to attention a novel research question, pose confidence estimation,where we aim at quantifying how reliable the visually estimated pose is. We develop a novel confidence measure to fulfil this task and show that it can be flexibly applied to different datasets,indoor or outdoor, and for various visual localization pipelines.We also show that the proposed techniques can be used to accomplish a secondary goal: improving the accuracy of existing pose estimation pipelines. Finally, the proposed approach is computationally light-weight and adds only a negligible increase to the computational effort of pose estimation."},
+
+                {"title": "Towards Algebraic Modeling of GPU Memory Access for Bank Conflict Mitigation",
+                "authors": "L.Ferranti, J.Boutellier",
+                "date": 2019,
+                "forum": "2019 IEEE International Workshop on Signal Processing Systems (SiPS)",
+                "link": "https://ieeexplore.ieee.org/abstract/document/9020385",
+                "cite": "ferranti2019towards",
+                "abstract": "Graphics Processing Units (GPU) have been widely used in various fields of scientific computing, such as in signal processing. GPUs have a hierarchical memory structure with memory layers that are shared between GPU processing elements. Partly due to the complex memory hierarchy, GPU programming is non-trivial, and several aspects must be taken into account, one being memory access patterns. One of the fastest GPU memory layers, shared memory, is grouped into banks to enable fast, parallel access for processing elements. Unfortunately, it may happen that multiple threads of a GPU program may access the same shared memory bank simultaneously causing a bank conflict. If this happens, program execution slows down as memory accesses have to be rescheduled to determine which instruction to execute first. Bank conflicts are not taken into account automatically by the compiler, and hence the programmer must detect and deal with them prior to program execution. In this paper, we present an algebraic approach to detect bank conflicts and prove some theoretical results that can be used to predict when bank conflicts happen and how to avoid them. Also, our experimental results illustrate the savings in computation time."}]
+    },
+
+    {"type": "Talks",
+     "items": [{"title": "Confidence Estimation in Visual Localization",
+                "authors": "Luca Ferranti",
+                "forum": "AI Day",
+                "date": "26 Nov 2020"},
+                {"title": "Confidence estimation in image-based localization",
+                 "authors": "Luca Ferranti",
+                 "forum": "Indoor and Challenging Navigation Seminar",
+                 "date": "29 November 2019"}]
+    },
+
+    {"type": "Thesis",
+    "items": [{"title": "Confidence Estimation in Visual Localization",
+               "authors": "Luca Ferranti",
+               "forum": "Tampere University",
+               "date": "2019",
+               "notes": "Master thesis",
+               "cite": "ferranti2019confidence",
+               "link": "https://trepo.tuni.fi/handle/10024/118164"}]
+    }
+]
