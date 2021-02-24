@@ -26,7 +26,7 @@
 
 \begin{biography}{resume="/assets/ferranti_cv.pdf"}
   > *My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humour and some style.* - Maya Angelou
-  I am a computer science phd student at the University of Vaasa. My research interests lie in computational mathematics and its application to engineering domains. Particularly, I have experience in computational algebraic geometry and polynomial solvers optimisation. Application domains I have experience with include computer vision and satellite positioning.
+  I am a computer science PhD student at the University of Vaasa. My research interests lie in computational mathematics and its application to engineering domains. Particularly, I have experience in computational algebraic geometry and polynomial solvers optimisation. Application domains I have experience with include computer vision and satellite positioning.
 
   If you want to collaborate with me or simply fund my research, do not hesitate to contact me.  
 \end{biography}
@@ -129,7 +129,8 @@
   from="Sept 2014",
   to="Apr 2015",
   location="Ancona, Italy",
-  descr="As volunteer job, I taught Italian to immigrants targetting level from A1 to B2"
+  descr="As volunteer job, I taught Italian to immigrants targetting level from A1 to B2",
+  last=true
 }
 @@
 
