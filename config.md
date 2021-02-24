@@ -12,7 +12,7 @@ hasmermaid = false
 # RSS setup
 website_title = "Luca Ferranti webpage"
 website_descr = "Luca Ferranti webpage"
-website_url   = "https://tlienart.github.io/FranklinTemplates.jl/"
+website_url   = "https://lucaferranti.github.io/"
 +++
 
 \newcommand{\callout}[1]{~~~<div class="alert alert-note"><div>~~~#1~~~</div></div>~~~}
