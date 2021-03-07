@@ -14,6 +14,12 @@
 #publications .container {
     margin-top: 2rem;
 }
+
+h2 a {
+    text-decoration: underline;
+    color: inherit;
+    pointer-events: none;
+}
 /* ==================================================================
     KATEX
 ================================================================== */
