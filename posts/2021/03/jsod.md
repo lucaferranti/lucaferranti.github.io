@@ -1,4 +1,4 @@
-@def title = "JSoD"
+@def title = "Julia Season of Docs: Developing JuliaIntervals documentation"
 @def pubdate = Date("2021-03-27")
 @def img = "/assets/posts/jsod/juliaintervals-logoTest.svg"
 
@@ -9,7 +9,7 @@ My mentor was \elink{dpsanders}{https://github.com/dpsanders} and I worked for J
 
 ## Final deliverable
 
-The final deliverable of the project is a webpage for the JuliaIntervals organisation containing documentation and learning materials The webpage is available at \elink{juliaintervals.github.io}{juliaintervals.github.io}, here is a screenshot.
+The final deliverable of the project is a webpage for the JuliaIntervals organisation containing documentation and learning materials The webpage is available at \elink{juliaintervals.github.io}{https://juliaintervals.github.io}, here is a screenshot.
 
 \fig{/assets/posts/jsod/homepage.PNG}
 
