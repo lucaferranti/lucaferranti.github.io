@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Luca Ferranti">
+  <meta name="description" content="Project Researcher">
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/lucaferranti/lucaferranti.github.io/main/_assets/img/cvkuva.jpeg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1238" />
+  <meta property="og:image:height" content="1483" />
+  <meta name="theme-color" content="#2962ff">
+
+  <!-- google thumbnail -->
+  <meta name="thumbnail" content="https://raw.githubusercontent.com/lucaferranti/lucaferranti.github.io/main/_assets/img/cvkuva.jpeg" />
+
+
+  <link
+  rel=preconnect
+  href="https://fonts.gstatic.com"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"
+  crossorigin=anonymous>
+
+<!-- locally served -->
+<link rel=stylesheet href="/libs/academic/academic.min.css">
+
+<link rel=stylesheet href="/css/extra.css">
+
+<!-- highlight + katex + plotly -->
+<link rel=stylesheet href="/libs/highlight/github.min.css">
+
+  <link rel="stylesheet" href="/libs/katex/katex.min.css">
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+
+   <title>Hello IntervalLinearAlgebra.jl</title>  
+</head>
+
+<body id=top data-spy="scroll" data-offset="70" data-target=#navbar-main>
+
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+  <div class=container>
+    <!-- Main name -->
+    <div class="d-none d-lg-inline-flex">
+      <a class=navbar-brand href="/">L. Ferranti</a>
+    </div>
+    <!-- Button for narrow mode -->
+    <button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+    <!-- Main name for mobile mode -->
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class=navbar-brand href="/">L. Ferranti</a>
+    </div>
+    <!-- Menu items -->
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
+      <ul class="navbar-nav d-md-inline-flex">
+        <li class=nav-item><a class=nav-link href="/#posts" data-target=#posts><span>News</span></a></li>
+        <li class=nav-item><a class=nav-link href="/research/"><span>Research</span></a></li>
+        <li class=nav-item><a class=nav-link href="/courses/"><span>Teaching</span></a></li>
+        <li class=nav-item><a class=nav-link href="/posts/"><span>Blog</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <span class="js-widget-page d-none"></span>
+
+  
+    <article class=article>
+      <div class="article-container pt-3">
+        <h1>Hello IntervalLinearAlgebra.jl</h1>
+      </div>
+      
+
+      <div class="article-container">
+        <div class="article-style">
+  
+<div class="franklin-content">
+<p>Hello everyone and welcome to the first blog of my GSOC&#39;21 project. Here I will give a short project overview and present the first results I have obtained so far.</p>
+<h2 id="project_overview"><a href="#project_overview" class="header-anchor">Project overview</a></h2>
+<p>The purpose of the project is to develop <a href="https://github.com/lucaferranti/IntervalLinearAlgebra.jl">IntervalLinearAlgebra.jl</a> a package to perform numerical linear algebra <em>rigorously</em>, i.e. using interval arithmetic. The package is fully written in <a href="https://julialang.org/">Julia</a> and is built on top of <a href="https://github.com/juliaIntervals/IntervalArithmetic.jl">IntervalArithmetic.jl</a> for interval computations.</p>
+<h2 id="basic_concepts"><a href="#basic_concepts" class="header-anchor">Basic concepts</a></h2>
+<p>As we are working with interval arithmetic, the most fundamental mathematical structure is <em>interval</em>. An interval \([a, b]\) is defined as a subset of \(\mathbb{R}\) as follows</p>
+\[
+[a, b] = \{x \in \mathbb{R} | a \le x \le b \}
+\]
+<p>Next, we introduce the concept of <em>interval matrix</em>, that is a matrix whose entries are intervals. More formally, let us denote by \(\mathbb{I}\mathbb{R}\) the set of real intervals. Then an interval matrix \(\mathbf{A}\in\mathbb{I}\mathbb{R}^{m\times n}\) is defined as</p>
+\[
+\mathbf{A} = \{ A \in \mathbb{R}^{m\times n} | A_{ij} \in \mathbf{A}_{ij}, 1\le i \le m, 1\le j \le n\}
+\]
+<p>Hence an interval matrix can be thought as a set of real matrices. Let us give an example</p>
+\[
+\mathbf{A} = \begin{bmatrix}
+[2, 4]&[-2,1]\\
+[-1, 2]&[2, 4]
+\end{bmatrix}
+\]
+<p>is an interval matrix and for example</p>
+\[
+A_1=\begin{bmatrix}
+2&0\\
+1.5&3
+\end{bmatrix} \in \mathbf{A}
+\]
+<p>but</p>
+\[
+A_1=\begin{bmatrix}
+2&0\\
+1.5&8
+\end{bmatrix} \notin \mathbf{A}
+\]
+<h2 id="interval_linear_systems"><a href="#interval_linear_systems" class="header-anchor">Interval linear systems</a></h2>
+<p>At the moment, the functionalities of the package are limited to solve square interval systems, that is systems in the form</p>
+\[
+\mathbf{A}\mathbf{x}=\mathbf{b}
+\]
+<p>where \(\mathbf{A}\in\mathbb{I}\mathbb{R}^{n\times n}\) and \(\mathbf{b}\in\mathbb{I}\mathbb{R}^n\).</p>
+<p>Now it&#39;s legittimate to ask the question: what does it mean to solve an interval linear system, in other words, what is \(\mathbf{x}\)? It is defined as</p>
+\[
+\mathbf{x} = \{x \in \mathbb{R}^n | Ax=b \text{ for some } A\in\mathbf{A}, b\in\mathbf{b} \}
+\]
+<p>in other words \(x\) is the set of solutions of the real linear systems \(Ax=b\) for which \( A\in\mathbf{A}\) and \(b\in\mathbf{b}\). Again, the interval linear system can be thought as a set of real linear systems.  The solution of the interval linear system is the set of solutions of the real linear systems in the interval system.</p>
+<h2 id="characterizing_the_solution_of_an_interval_linear_system"><a href="#characterizing_the_solution_of_an_interval_linear_system" class="header-anchor">Characterizing the solution of an interval linear system</a></h2>
+<p>We now know what an interval linear system is and what solving it means. But how do we solve it? A naive approach would be to use Montecarlo, i.e. to randomly sample elements from the intervals and solve the several random real systems. Hopefully, repeating several times, we will get a good approximation of the true solution. Let us try it. Suppose we want to solve the linear system</p>
+\[
+\begin{bmatrix}
+[2, 4]&[-2,1]\\
+[-1, 2]&[2, 4]
+\end{bmatrix}\mathbf{x} =
+\begin{bmatrix}
+[-2, 2]\\
+[-2, 2]
+\end{bmatrix}
+\]
+<p>first let us import <code>IntervalArithmetic.jl</code> to define the matrix and vector.</p>
+<pre><code class="language-julia">using IntervalArithmetic
+
+A &#61; &#91;2..4 -2..1; -1..2 2..4&#93;
+b &#61; &#91;-2..2, -2..2&#93;
+@show A, b</code></pre>
+<pre><code class="language-julia">&#40;A, b&#41; &#61; &#40;Interval&#123;Float64&#125;&#91;&#91;2, 4&#93; &#91;-2, 1&#93;; &#91;-1, 2&#93; &#91;2, 4&#93;&#93;, Interval&#123;Float
+64&#125;&#91;&#91;-2, 2&#93;, &#91;-2, 2&#93;&#93;&#41;
+&#40;Interval&#123;Float64&#125;&#91;&#91;2, 4&#93; &#91;-2, 1&#93;; &#91;-1, 2&#93; &#91;2, 4&#93;&#93;, Interval&#123;Float64&#125;&#91;&#91;-2, 
+2&#93;, &#91;-2, 2&#93;&#93;&#41;</code></pre>
+<p>Now we need a function to sample from an intervals</p>
+<pre><code class="language-julia">sample&#40;x&#41; &#61; rand&#40;&#41;*&#40;sup&#40;x&#41; - inf&#40;x&#41;&#41; &#43; inf&#40;x&#41;</code></pre>
+<pre><code class="language-julia">sample &#40;generic function with 1 method&#41;</code></pre>
+<p>we are now ready for our montecarlo simulation, let us solve \(100000\) random instances</p>
+<pre><code class="language-julia">N &#61; 100000
+
+xs &#61; &#91;sample.&#40;A&#41;\sample.&#40;b&#41; for _ in 1:N&#93;</code></pre>
+<pre><code class="language-julia">100000-element Vector&#123;Vector&#123;Float64&#125;&#125;:
+ &#91;0.3675588743168303, 0.28164434880716016&#93;
+ &#91;-0.16532451692481342, -0.14094324290017501&#93;
+ &#91;-0.49430847122193655, -0.34028913779324355&#93;
+ &#91;0.49587754910595727, -0.06771426545272717&#93;
+ &#91;0.26928278788575294, -0.7190682638766965&#93;
+ &#91;0.5231931726314687, -0.4843086454609057&#93;
+ &#91;0.6198610291052782, -0.20380178164383136&#93;
+ &#91;-0.10539770299004424, 0.5371501041198676&#93;
+ &#91;0.811761821912226, 0.4442893649050811&#93;
+ &#91;0.2784681968502335, 0.54703603897014&#93;
+ ⋮
+ &#91;-0.1550285530472463, -0.12110935725403765&#93;
+ &#91;-0.39791200107041474, 0.4930013023034729&#93;
+ &#91;0.5361702873438308, 0.5205224155092559&#93;
+ &#91;-0.010689597217576756, 0.7866615006899088&#93;
+ &#91;0.8207604054068416, 0.4611005234633163&#93;
+ &#91;0.025012938922391776, -0.689159868674039&#93;
+ &#91;-0.8388763270895144, 0.6263685003924494&#93;
+ &#91;-0.018497350801918916, -0.3739913473763062&#93;
+ &#91;0.052494370273044044, -0.8244398045111828&#93;</code></pre>
+<p>and let&#39;s plot the solution</p>
+<pre><code class="language-julia">using Plots
+
+x &#61; &#91;xs&#91;i&#93;&#91;1&#93; for i in 1:N&#93;
+y &#61; &#91;xs&#91;i&#93;&#91;2&#93; for i in 1:N&#93;
+
+scatter&#40;x, y, leg&#61;false, ratio&#61;1, alpha&#61;0.5&#41;</code></pre>
+<p><img src="/posts/2021/06/figures/gsoc_blog1_4_1.png" alt="" /></p>
+<p>Looks a little messy, let us plot  2D-histogram instead</p>
+<pre><code class="language-julia">histogram2d&#40;x, y&#41;</code></pre>
+<p><img src="/posts/2021/06/figures/gsoc_blog1_5_1.png" alt="" /></p>
+<p>as we can see, most of the solutions seem to be condensed close to the origin, but repeating the experiments enough times we also got some solutions farther away, obtaining a star looking area. Now the question is, do we have the whole star?</p>
+<p>Before we answer the question, we need to recall a couple of concepts from interval arithmetic.  Given an interval \(X = [a, b]\), we define:</p>
+<ul>
+<li><p>the <em>center</em> \(mid(X) = \frac{a+b}{2}\)</p>
+</li>
+<li><p>the <em>radius</em> \(rad(X) = \frac{b-a}{2}\)</p>
+</li>
+</ul>
+<p>let us also denote</p>
+<ul>
+<li><p>the <em>center matrix</em> \(A_c = mid(A)\)</p>
+</li>
+<li><p>the <em>radius matrix</em> \(A_\Delta = rad(A)\)</p>
+</li>
+</ul>
+<p>where the operations <code>mid</code> and <code>rad</code> are applied to the matrices elementwise.</p>
+<p>We are now ready to state the <em>Oettli-Präger</em> theorem, which says that an interval linear system \(\mathbf{A}\mathbf{x}=\mathbf{b}\) is equivalent to the set of real inequalities</p>
+\[
+|A_cx-b_c| \le A_\Delta|x| + b_\Delta,
+\]
+<p>where the absolute values are to be taken elementwise.</p>
+<p>We have now transformed the set of interval equalities into a set of real inequalities. How to find the set of points satisfying those inequalities? <a href="https://github.com/JuliaIntervals/IntervalConstraintProgramming.jl">IntervalConstraintProgramming.jl</a> comes to the rescue&#33;</p>
+<p>So to solve the interval linear system we should</p>
+<ul>
+<li><p>write the inequalities using Oettli-Präger</p>
+</li>
+<li><p>solving the inequalities using <code>IntervalConstraintProgramming.jl</code></p>
+</li>
+</ul>
+<p><code>IntevalLinearAlgebra.jl</code> has a function that does all of this for you&#33; Let&#39;s import it, note we also need to import <code>IntervalConstraintProgramming.jl</code></p>
+<pre><code class="language-julia">using IntervalLinearAlgebra, IntervalConstraintProgramming</code></pre>
+<p>then we need an initial enclosure of the solution. We will discuss later how to find this, for now, let us just cheat and rabbit out a good initial guess</p>
+<pre><code class="language-julia">X &#61; IntervalBox&#40;-5..5, 2&#41;</code></pre>
+<pre><code class="language-julia">&#91;-5, 5&#93;²</code></pre>
+<p>at the moment, we also need to provide a list of variables, this will be automated soon&#33;</p>
+<pre><code class="language-julia">vars &#61; &#40;:x, :y&#41;</code></pre>
+<pre><code class="language-julia">&#40;:x, :y&#41;</code></pre>
+<p>now we can solve the interval linear system using Oettli-Präger theorem</p>
+<pre><code class="language-julia">p &#61; oettli&#40;A, b, X, vars&#41;</code></pre>
+<pre><code class="language-julia">Paving:
+- tolerance ϵ &#61; 0.01
+- inner approx. of length 13712
+- boundary approx. of length 7489</code></pre>
+<p>to understand what <code>p</code> is we would need to go into the specifics of <code>IntervalConstraintProgramming.jl</code>. Let&#39;s just say that <code>p</code> has two lists of small interval boxes, one containing those boxes strictly inside the solution set and one containing the boxes at the boundary.</p>
+<p>Finally let us plot the solution on the same figure with the 2d-histogram</p>
+<pre><code class="language-julia">plot&#40;p.inner, legend&#61;false, ratio&#61;1, lw&#61;0&#41;
+plot&#33;&#40;p.boundary&#41;
+histogram2d&#33;&#40;x, y&#41;</code></pre>
+<p><img src="/posts/2021/06/figures/gsoc_blog1_10_1.png" alt="" /></p>
+<p>as we can see, the original montecarlo approximation, despite the high number of iterations, was pretty disappointing.</p>
+<h2 id="conclusions"><a href="#conclusions" class="header-anchor">Conclusions</a></h2>
+<p>we have discussed what an interval linear system is and observed that it solution set can have a complex non-convex shape. We also gave a theorem that can be used to characterize the solution of the interval linear system. However, there are a couple of open entry<em>point</em>and<em>project</em>file_inside</p>
+<ul>
+<li><p>how do we find the starting enclosure?</p>
+</li>
+<li><p>Oettli-Präger becomes unpractical in higher dimensions</p>
+</li>
+</ul>
+<p>both points can be summarized into one</p>
+<ul>
+<li><p>how can we find a tight interval box &#40;a vector of intervals&#41; containing the solution of the</p>
+</li>
+</ul>
+<p>interval linear system?</p>
+<p>The answer of this question will be the topic of the next blog entry. Stay tuned&#33;</p>
+
+</div> <!-- article style -->
+
+
+<div class="container">
+  <footer class="site-footer">
+    <p class="powered-by">Built with <a href="https://franklinjl.org" target="_blank" rel="noopener">Franklin.jl</a> and the <a href="https://julialang.org" target="_blank" rel="noopener">Julia Programming Language</a>.
+
+      <span class="float-right" aria-hidden="true">
+        <a href="#" class="back-to-top">
+          <span class="button_icon">
+            <i class="fas fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+    </p>
+  </footer>
+</div>
+</div>
+  </div> <!--article container -->
+</article>
+
+
+<!-- CONTENT ENDS HERE -->
+     <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+     
+     <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+ 
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+
+  <script src="/libs/academic/academic.min.js"></script>
+
+  </body>
+</html>
