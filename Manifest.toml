@@ -51,9 +51,9 @@ uuid = "a8cc5b0e-0ffa-5ad4-8c14-923d3ee1735f"
 version = "4.0.4"
 
 [[DataAPI]]
-git-tree-sha1 = "dfb3b7e89e395be1e25c2ad6d7690dc29cc53b1d"
+git-tree-sha1 = "ee400abb2298bd13bfc3df1c412ed228061a2385"
 uuid = "9a962f9c-6df0-11e9-0e5d-c546b8b5ee8a"
-version = "1.6.0"
+version = "1.7.0"
 
 [[DataValueInterfaces]]
 git-tree-sha1 = "bfc1187b79289637fa0ef6d4436ebdfe6905cbd6"
@@ -292,15 +292,15 @@ uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[PlotlyBase]]
 deps = ["Base64", "Dates", "DelimitedFiles", "DocStringExtensions", "JSON", "Kaleido_jll", "LaTeXStrings", "Logging", "Parameters", "Pkg", "REPL", "Requires", "Statistics", "UUIDs"]
-git-tree-sha1 = "aafd9d49797e1b7854488c17d2b7682798d6836a"
+git-tree-sha1 = "6c5a286f9a20eb349af1d8eed33db78f02704b46"
 uuid = "a03496cd-edff-5a9b-9e67-9cda94a718b5"
-version = "0.6.0"
+version = "0.6.2"
 
 [[PlotlyJS]]
 deps = ["Blink", "DelimitedFiles", "JSExpr", "JSON", "Markdown", "Pkg", "PlotlyBase", "REPL", "Reexport", "Requires", "WebIO"]
-git-tree-sha1 = "28e9b29082442628e90417d33bf461e76606d563"
+git-tree-sha1 = "04b78af3c43646bfcc938058ece9d030abc9d6e3"
 uuid = "f0f68f2c-4968-5e81-91da-67840de0976a"
-version = "0.16.0"
+version = "0.16.1"
 
 [[Preferences]]
 deps = ["TOML"]

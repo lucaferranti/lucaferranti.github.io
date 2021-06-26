@@ -130,7 +130,7 @@ A_1=\begin{bmatrix}
 \]
 <p>but</p>
 \[
-A_1=\begin{bmatrix}
+A_2=\begin{bmatrix}
 2&0\\
 1.5&8
 \end{bmatrix} \notin \mathbf{A}
@@ -141,11 +141,11 @@ A_1=\begin{bmatrix}
 \mathbf{A}\mathbf{x}=\mathbf{b}
 \]
 <p>where \(\mathbf{A}\in\mathbb{I}\mathbb{R}^{n\times n}\) and \(\mathbf{b}\in\mathbb{I}\mathbb{R}^n\).</p>
-<p>Now it&#39;s legittimate to ask the question: what does it mean to solve an interval linear system, in other words, what is \(\mathbf{x}\)? It is defined as</p>
+<p>Now it&#39;s legitimate to ask the question: what does it mean to solve an interval linear system, in other words, what is \(\mathbf{x}\)? It is defined as</p>
 \[
 \mathbf{x} = \{x \in \mathbb{R}^n | Ax=b \text{ for some } A\in\mathbf{A}, b\in\mathbf{b} \}
 \]
-<p>in other words \(x\) is the set of solutions of the real linear systems \(Ax=b\) for which \( A\in\mathbf{A}\) and \(b\in\mathbf{b}\). Again, the interval linear system can be thought as a set of real linear systems.  The solution of the interval linear system is the set of solutions of the real linear systems in the interval system.</p>
+<p>in other words \(\mathbf{x}\) is the set of solutions of the real linear systems \(Ax=b\) for which \( A\in\mathbf{A}\) and \(b\in\mathbf{b}\). Again, the interval linear system can be thought as a set of real linear systems.  The solution of the interval linear system is the set of solutions of the real linear systems in the interval system.</p>
 <h2 id="characterizing_the_solution_of_an_interval_linear_system"><a href="#characterizing_the_solution_of_an_interval_linear_system" class="header-anchor">Characterizing the solution of an interval linear system</a></h2>
 <p>We now know what an interval linear system is and what solving it means. But how do we solve it? A naive approach would be to use Montecarlo, i.e. to randomly sample elements from the intervals and solve the several random real systems. Hopefully, repeating several times, we will get a good approximation of the true solution. Let us try it. Suppose we want to solve the linear system</p>
 \[
@@ -158,44 +158,43 @@ A_1=\begin{bmatrix}
 [-2, 2]
 \end{bmatrix}
 \]
-<p>first let us import <code>IntervalArithmetic.jl</code> to define the matrix and vector.</p>
-<pre><code class="language-julia">using IntervalArithmetic
+<p>first let us import <code>IntervalArithmetic.jl</code> to define the matrix and vector. Since we are planning to solve several thousands of instances of the interval problem and we are working with small arrays, we can use <a href="https://github.com/JuliaArrays/StaticArrays.jl">StaticArrays.jl</a> to speed up the computations.</p>
+<pre><code class="language-julia">using IntervalArithmetic, StaticArrays 
 
-A &#61; &#91;2..4 -2..1; -1..2 2..4&#93;
-b &#61; &#91;-2..2, -2..2&#93;
-@show A, b</code></pre>
-<pre><code class="language-julia">&#40;A, b&#41; &#61; &#40;Interval&#123;Float64&#125;&#91;&#91;2, 4&#93; &#91;-2, 1&#93;; &#91;-1, 2&#93; &#91;2, 4&#93;&#93;, Interval&#123;Float
-64&#125;&#91;&#91;-2, 2&#93;, &#91;-2, 2&#93;&#93;&#41;
-&#40;Interval&#123;Float64&#125;&#91;&#91;2, 4&#93; &#91;-2, 1&#93;; &#91;-1, 2&#93; &#91;2, 4&#93;&#93;, Interval&#123;Float64&#125;&#91;&#91;-2, 
-2&#93;, &#91;-2, 2&#93;&#93;&#41;</code></pre>
-<p>Now we need a function to sample from an intervals</p>
-<pre><code class="language-julia">sample&#40;x&#41; &#61; rand&#40;&#41;*&#40;sup&#40;x&#41; - inf&#40;x&#41;&#41; &#43; inf&#40;x&#41;</code></pre>
-<pre><code class="language-julia">sample &#40;generic function with 1 method&#41;</code></pre>
+A &#61; @SMatrix &#91;2..4 -2..1; -1..2 2..4&#93;
+b &#61; @SVector &#91;-2..2, -2..2&#93;</code></pre>
+<pre><code class="language-julia">2-element StaticArrays.SVector&#123;2, Interval&#123;Float64&#125;&#125; with indices SOneTo&#40;2&#41;
+:
+ &#91;-2, 2&#93;
+ &#91;-2, 2&#93;</code></pre>
+<p>To perform Montecarlo, we need to sample from the intervals. This can be achieved using the <code>rand</code> function, for example </p>
+<pre><code class="language-julia">rand&#40;1..2&#41;</code></pre>
+<pre><code class="language-julia">1.6291348873684761</code></pre>
 <p>we are now ready for our montecarlo simulation, let us solve \(100000\) random instances</p>
 <pre><code class="language-julia">N &#61; 100000
 
-xs &#61; &#91;sample.&#40;A&#41;\sample.&#40;b&#41; for _ in 1:N&#93;</code></pre>
-<pre><code class="language-julia">100000-element Vector&#123;Vector&#123;Float64&#125;&#125;:
- &#91;0.3675588743168303, 0.28164434880716016&#93;
- &#91;-0.16532451692481342, -0.14094324290017501&#93;
- &#91;-0.49430847122193655, -0.34028913779324355&#93;
- &#91;0.49587754910595727, -0.06771426545272717&#93;
- &#91;0.26928278788575294, -0.7190682638766965&#93;
- &#91;0.5231931726314687, -0.4843086454609057&#93;
- &#91;0.6198610291052782, -0.20380178164383136&#93;
- &#91;-0.10539770299004424, 0.5371501041198676&#93;
- &#91;0.811761821912226, 0.4442893649050811&#93;
- &#91;0.2784681968502335, 0.54703603897014&#93;
+xs &#61; &#91;rand.&#40;A&#41;\rand.&#40;b&#41; for _ in 1:N&#93;</code></pre>
+<pre><code class="language-julia">100000-element Vector&#123;StaticArrays.SVector&#123;2, Float64&#125;&#125;:
+ &#91;-0.44889606428857604, 0.3928096488422731&#93;
+ &#91;0.7961509062448051, 0.21261565245738948&#93;
+ &#91;-0.21652683334642917, -0.14026594625705752&#93;
+ &#91;0.2780614734829664, -0.08300975077387636&#93;
+ &#91;-0.09553601785839375, -0.9070371038176132&#93;
+ &#91;0.4054651040742707, 0.40021765448010016&#93;
+ &#91;-0.8137129912700739, -0.177550318111634&#93;
+ &#91;0.2822411518015633, 0.250135048167971&#93;
+ &#91;-0.15235580069558002, 0.2310472175067912&#93;
+ &#91;-0.23406607169530733, 0.5566371448674734&#93;
  ⋮
- &#91;-0.1550285530472463, -0.12110935725403765&#93;
- &#91;-0.39791200107041474, 0.4930013023034729&#93;
- &#91;0.5361702873438308, 0.5205224155092559&#93;
- &#91;-0.010689597217576756, 0.7866615006899088&#93;
- &#91;0.8207604054068416, 0.4611005234633163&#93;
- &#91;0.025012938922391776, -0.689159868674039&#93;
- &#91;-0.8388763270895144, 0.6263685003924494&#93;
- &#91;-0.018497350801918916, -0.3739913473763062&#93;
- &#91;0.052494370273044044, -0.8244398045111828&#93;</code></pre>
+ &#91;0.19690305714223466, -0.16718205313829992&#93;
+ &#91;0.03447064311292888, -0.6304584802868007&#93;
+ &#91;0.18876670332677647, 0.19224372028424622&#93;
+ &#91;0.4736864339328689, 0.08625234706181056&#93;
+ &#91;-0.17587467167618367, 0.5901451469686299&#93;
+ &#91;0.1383723642923509, 0.6101938606469426&#93;
+ &#91;0.187315914769036, 0.045985125281754205&#93;
+ &#91;0.2638363596614852, -0.22754940002799534&#93;
+ &#91;-0.5025052110421537, -0.28679114075137596&#93;</code></pre>
 <p>and let&#39;s plot the solution</p>
 <pre><code class="language-julia">using Plots
 
@@ -205,7 +204,7 @@ y &#61; &#91;xs&#91;i&#93;&#91;2&#93; for i in 1:N&#93;
 scatter&#40;x, y, leg&#61;false, ratio&#61;1, alpha&#61;0.5&#41;</code></pre>
 <p><img src="/posts/2021/06/figures/gsoc_blog1_4_1.png" alt="" /></p>
 <p>Looks a little messy, let us plot  2D-histogram instead</p>
-<pre><code class="language-julia">histogram2d&#40;x, y&#41;</code></pre>
+<pre><code class="language-julia">histogram2d&#40;x, y, ratio&#61;1&#41;</code></pre>
 <p><img src="/posts/2021/06/figures/gsoc_blog1_5_1.png" alt="" /></p>
 <p>as we can see, most of the solutions seem to be condensed close to the origin, but repeating the experiments enough times we also got some solutions farther away, obtaining a star looking area. Now the question is, do we have the whole star?</p>
 <p>Before we answer the question, we need to recall a couple of concepts from interval arithmetic.  Given an interval \(X = [a, b]\), we define:</p>
@@ -258,7 +257,7 @@ histogram2d&#33;&#40;x, y&#41;</code></pre>
 <p><img src="/posts/2021/06/figures/gsoc_blog1_10_1.png" alt="" /></p>
 <p>as we can see, the original montecarlo approximation, despite the high number of iterations, was pretty disappointing.</p>
 <h2 id="conclusions"><a href="#conclusions" class="header-anchor">Conclusions</a></h2>
-<p>we have discussed what an interval linear system is and observed that it solution set can have a complex non-convex shape. We also gave a theorem that can be used to characterize the solution of the interval linear system. However, there are a couple of open entry<em>point</em>and<em>project</em>file_inside</p>
+<p>We have discussed what an interval linear system is and observed that it solution set can have a complex non-convex shape. We also gave a theorem that can be used to characterize the solution of the interval linear system. However, there are a couple of open issues</p>
 <ul>
 <li><p>how do we find the starting enclosure?</p>
 </li>
@@ -267,10 +266,9 @@ histogram2d&#33;&#40;x, y&#41;</code></pre>
 </ul>
 <p>both points can be summarized into one</p>
 <ul>
-<li><p>how can we find a tight interval box &#40;a vector of intervals&#41; containing the solution of the</p>
+<li><p>how can we find a tight interval box &#40;a vector of intervals&#41; containing the solution of the interval linear system?</p>
 </li>
 </ul>
-<p>interval linear system?</p>
 <p>The answer of this question will be the topic of the next blog entry. Stay tuned&#33;</p>
 
 </div> <!-- article style -->
