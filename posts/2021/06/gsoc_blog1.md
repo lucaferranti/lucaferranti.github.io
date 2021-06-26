@@ -51,7 +51,7 @@ $$
 but
 
 $$
-A_1=\begin{bmatrix}
+A_2=\begin{bmatrix}
 2&0\\
 1.5&8
 \end{bmatrix} \notin \mathbf{A}
@@ -68,14 +68,14 @@ $$
 
 where $\mathbf{A}\in\mathbb{I}\mathbb{R}^{n\times n}$ and $\mathbf{b}\in\mathbb{I}\mathbb{R}^n$.
 
-Now it's legittimate to ask the question: what does it mean to solve an interval linear system, in other words, what is $\mathbf{x}$? It is
+Now it's legitimate to ask the question: what does it mean to solve an interval linear system, in other words, what is $\mathbf{x}$? It is
 defined as
 
 $$
 \mathbf{x} = \{x \in \mathbb{R}^n | Ax=b \text{ for some } A\in\mathbf{A}, b\in\mathbf{b} \}
 $$
 
-in other words $x$ is the set of solutions of the real linear systems $Ax=b$ for which $ A\in\mathbf{A}$ and $b\in\mathbf{b}$.
+in other words $\mathbf{x}$ is the set of solutions of the real linear systems $Ax=b$ for which $ A\in\mathbf{A}$ and $b\in\mathbf{b}$.
 Again, the interval linear system can be thought as a set of real linear systems. 
 The solution of the interval linear system is the set of solutions of the real linear systems in the interval system.
 
@@ -98,34 +98,34 @@ $$
 $$
 
 first let us import `IntervalArithmetic.jl` to define the matrix and vector.
+Since we are planning to solve several thousands of instances of the interval problem and we are working with small arrays, we can use [StaticArrays.jl](https://github.com/JuliaArrays/StaticArrays.jl) to speed up the computations.
 
 ```julia
-using IntervalArithmetic
+using IntervalArithmetic, StaticArrays 
 
-A = [2..4 -2..1; -1..2 2..4]
-b = [-2..2, -2..2]
-@show A, b
+A = @SMatrix [2..4 -2..1; -1..2 2..4]
+b = @SVector [-2..2, -2..2]
 ```
 
 ```
-(A, b) = (Interval{Float64}[[2, 4] [-2, 1]; [-1, 2] [2, 4]], Interval{Float
-64}[[-2, 2], [-2, 2]])
-(Interval{Float64}[[2, 4] [-2, 1]; [-1, 2] [2, 4]], Interval{Float64}[[-2, 
-2], [-2, 2]])
+2-element StaticArrays.SVector{2, Interval{Float64}} with indices SOneTo(2)
+:
+ [-2, 2]
+ [-2, 2]
 ```
 
 
 
 
 
-Now we need a function to sample from an intervals
+To perform Montecarlo, we need to sample from the intervals. This can be achieved using the `rand` function, for example 
 
 ```julia
-sample(x) = rand()*(sup(x) - inf(x)) + inf(x)
+rand(1..2)
 ```
 
 ```
-sample (generic function with 1 method)
+1.6291348873684761
 ```
 
 
@@ -137,31 +137,31 @@ we are now ready for our montecarlo simulation, let us solve $100000$ random ins
 ```julia
 N = 100000
 
-xs = [sample.(A)\sample.(b) for _ in 1:N]
+xs = [rand.(A)\rand.(b) for _ in 1:N]
 ```
 
 ```
-100000-element Vector{Vector{Float64}}:
- [0.3675588743168303, 0.28164434880716016]
- [-0.16532451692481342, -0.14094324290017501]
- [-0.49430847122193655, -0.34028913779324355]
- [0.49587754910595727, -0.06771426545272717]
- [0.26928278788575294, -0.7190682638766965]
- [0.5231931726314687, -0.4843086454609057]
- [0.6198610291052782, -0.20380178164383136]
- [-0.10539770299004424, 0.5371501041198676]
- [0.811761821912226, 0.4442893649050811]
- [0.2784681968502335, 0.54703603897014]
+100000-element Vector{StaticArrays.SVector{2, Float64}}:
+ [-0.44889606428857604, 0.3928096488422731]
+ [0.7961509062448051, 0.21261565245738948]
+ [-0.21652683334642917, -0.14026594625705752]
+ [0.2780614734829664, -0.08300975077387636]
+ [-0.09553601785839375, -0.9070371038176132]
+ [0.4054651040742707, 0.40021765448010016]
+ [-0.8137129912700739, -0.177550318111634]
+ [0.2822411518015633, 0.250135048167971]
+ [-0.15235580069558002, 0.2310472175067912]
+ [-0.23406607169530733, 0.5566371448674734]
  ⋮
- [-0.1550285530472463, -0.12110935725403765]
- [-0.39791200107041474, 0.4930013023034729]
- [0.5361702873438308, 0.5205224155092559]
- [-0.010689597217576756, 0.7866615006899088]
- [0.8207604054068416, 0.4611005234633163]
- [0.025012938922391776, -0.689159868674039]
- [-0.8388763270895144, 0.6263685003924494]
- [-0.018497350801918916, -0.3739913473763062]
- [0.052494370273044044, -0.8244398045111828]
+ [0.19690305714223466, -0.16718205313829992]
+ [0.03447064311292888, -0.6304584802868007]
+ [0.18876670332677647, 0.19224372028424622]
+ [0.4736864339328689, 0.08625234706181056]
+ [-0.17587467167618367, 0.5901451469686299]
+ [0.1383723642923509, 0.6101938606469426]
+ [0.187315914769036, 0.045985125281754205]
+ [0.2638363596614852, -0.22754940002799534]
+ [-0.5025052110421537, -0.28679114075137596]
 ```
 
 
@@ -185,7 +185,7 @@ scatter(x, y, leg=false, ratio=1, alpha=0.5)
 
 Looks a little messy, let us plot  2D-histogram instead
 ```julia
-histogram2d(x, y)
+histogram2d(x, y, ratio=1)
 ```
 
 ![](/posts/2021/06/figures/gsoc_blog1_5_1.png)
@@ -299,16 +299,15 @@ was pretty disappointing.
 
 ## Conclusions
 
-we have discussed what an interval linear system is and observed that it solution set
+We have discussed what an interval linear system is and observed that it solution set
 can have a complex non-convex shape. We also gave a theorem that can be used to characterize
-the solution of the interval linear system. However, there are a couple of open entry_point_and_project_file_inside
+the solution of the interval linear system. However, there are a couple of open issues
 
 - how do we find the starting enclosure?
 - Oettli-Präger becomes unpractical in higher dimensions
 
 both points can be summarized into one
 
-- how can we find a tight interval box (a vector of intervals) containing the solution of the
-interval linear system?
+- how can we find a tight interval box (a vector of intervals) containing the solution of the interval linear system?
 
 The answer of this question will be the topic of the next blog entry. Stay tuned!
