@@ -317,7 +317,7 @@ function show_publications()
             cite = haskey(item, "cite") ? """<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="/bibtex/$(item["cite"])/" target=_blank rel=noopener>
             <i class="fas fa-quote-right"></i></a>
             """ : ""
-            arxiv = haskey(item, "arxiv") ? """<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="/bibtex/$(item["cite"])/" target=_blank rel=noopener>
+            arxiv = haskey(item, "arxiv") ? """<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="$(item["arxiv"])" target=_blank rel=noopener>
             arxiv</a>
             """ : ""
 

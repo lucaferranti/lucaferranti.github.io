@@ -1,3 +1,5 @@
+@def title = "ferranti2020trust"
+
 ```
 @misc{ferranti2020trust,
     title={Can You Trust Your Pose? Confidence Estimation in Visual Localization}, 

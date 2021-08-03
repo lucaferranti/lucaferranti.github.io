@@ -1,3 +1,5 @@
+@def title = "ferranti2019confidence"
+
 ```
   @mastersthesis{ferranti2019confidence,
     title={Confidence Estimation in Image-Based Localization},

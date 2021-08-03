@@ -1,5 +1,7 @@
+@def title = "ferranti2019towards"
+
 ```
-@INPROCEEDINGS{9020385,  
+@INPROCEEDINGS{ferranti2019bankConflicts,  
 author={L. {Ferranti} and J. {Boutellier}},  
 booktitle={2019 IEEE International Workshop on Signal Processing Systems (SiPS)},   
 title={Towards Algebraic Modeling of GPU Memory Access for Bank Conflict Mitigation},   
