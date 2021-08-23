@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Luca Ferranti">
+  <meta name="description" content="Project Researcher">
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/lucaferranti/lucaferranti.github.io/main/_assets/img/cvkuva.jpeg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1238" />
+  <meta property="og:image:height" content="1483" />
+  <meta name="theme-color" content="#2962ff">
+
+  <!-- google thumbnail -->
+  <meta name="thumbnail" content="https://raw.githubusercontent.com/lucaferranti/lucaferranti.github.io/main/_assets/img/cvkuva.jpeg" />
+
+
+  <link
+  rel=preconnect
+  href="https://fonts.gstatic.com"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"
+  crossorigin=anonymous>
+
+<!-- locally served -->
+<link rel=stylesheet href="/libs/academic/academic.min.css">
+
+<link rel=stylesheet href="/css/extra.css">
+
+<!-- highlight + katex + plotly -->
+<link rel=stylesheet href="/libs/highlight/atom-one-dark.min.css">
+
+  <link rel="stylesheet" href="/libs/katex/katex.min.css">
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+
+   <title>IntervalLinearAlgebra.jl: Linear algebra done rigorously</title>  
+</head>
+
+<body id=top data-spy="scroll" data-offset="70" data-target=#navbar-main>
+
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+  <div class=container>
+    <!-- Main name -->
+    <div class="d-none d-lg-inline-flex">
+      <a class=navbar-brand href="/">L. Ferranti</a>
+    </div>
+    <!-- Button for narrow mode -->
+    <button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+    <!-- Main name for mobile mode -->
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class=navbar-brand href="/">L. Ferranti</a>
+    </div>
+    <!-- Menu items -->
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
+      <ul class="navbar-nav d-md-inline-flex">
+        <li class=nav-item><a class=nav-link href="/#posts" data-target=#posts><span>News</span></a></li>
+        <li class=nav-item><a class=nav-link href="/research/"><span>Research</span></a></li>
+        <li class=nav-item><a class=nav-link href="/courses/"><span>Teaching</span></a></li>
+        <li class=nav-item><a class=nav-link href="/posts/"><span>Blog</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <span class="js-widget-page d-none"></span>
+
+  
+    <article class=article>
+      <div class="article-container pt-3">
+        <h1>IntervalLinearAlgebra.jl: Linear algebra done rigorously</h1>
+      </div>
+      
+
+      <div class="article-container">
+        <div class="article-style">
+  
+<div class="franklin-content">
+<p>Hello&#33; Google Summer of Code is almost over and in this blog post I will summarize the final results of the project. First of all some useful facts.</p>
+<ul>
+<li><p><strong>Project goals</strong>: By the proposal, the goal of the project was to develop <code>IntervalLinearAlgebra.jl</code> a package for numerical linear algebra using interval arithmetic.   Particularly, the goal for the package was to be able to solve interval linear systems and compute fast interval multiplication using Rump algorithm.</p>
+</li>
+<li><p><strong>Deliverable</strong>: The main deliverable is the project repository, available <a href="https://github.com/JuliaIntervals/IntervalLinearAlgebra.jl">here</a></p>
+</li>
+<li><p><strong>JuliaCon 2021</strong>: I also presented my work at <a href="https://juliacon.org/2021/">JuliaCon2021</a> the annual conference about Julia. <a href="https://www.youtube.com/watch?v&#61;fre0TKgLJwg">Here</a> is the video for you to enjoy.    &#40;Youtube didn&#39;t like my accent and refused to generate captions for the video, nevertheless I transcribed the whole video for you 😃 &#41;</p>
+</li>
+<li><p><strong>Documentation</strong>: The package has also its own <a href="https://juliaintervals.github.io/IntervalLinearAlgebra.jl/dev/">documentation page</a>.   At the moment it has a full API interface documentationn, a beginner tutorial and some articles explaining the theory of interval linear algebra.    I am particularly proud of <a href="https://juliaintervals.github.io/IntervalLinearAlgebra.jl/dev/explanations/solution_set/">this article</a> and the layout I designed for the <a href="https://juliaintervals.github.io/IntervalLinearAlgebra.jl/dev/references/">references page</a>.    The post-GSoC goal for the documentation is to become the most complete yet accessible reference about interval linear algebra.</p>
+</li>
+<li><p><strong>Some statistics</strong></p>
+<ul>
+<li><p>According to good coding practices, most of the work has been done through pull requests, in total <a href="https://github.com/JuliaIntervals/IntervalLinearAlgebra.jl/pulls?q&#61;is&#37;3Apr&#43;is&#37;3Aclosed">51 closed PRs</a> and <a href="https://github.com/JuliaIntervals/IntervalLinearAlgebra.jl/pulls?q&#61;is&#37;3Aopen&#43;is&#37;3Apr">2 open</a>. Huge thanks to my mentors <a href="https://github.com/mforets">Marcelo Forets</a> and <a href="https://github.com/dpsanders">David Sanders</a> for the patience in reviewing those.</p>
+</li>
+<li><p>7 people starred the package. Funnily enough, the repository with the <a href="https://github.com/lucaferranti/ILAjuliacon2021">juliacon talk slides</a> has more stars at the time of writing.</p>
+</li>
+<li><p>According to codecov, at the time of writing the package has 310 effective lines of code &#40;removing all comments and all dummy lines such as <code>end</code>, <code>function func_name</code>, empty lines etc.&#41;</p>
+<ul>
+<li><p>The two currently open PRs about eigenvalues are adding 77 effective lines of code</p>
+</li>
+</ul>
+</li>
+<li><p>According to <a href="https://app.codecov.io/gh/juliaintervals/IntervalLinearAlgebra.jl">codecov</a>, package coverage is 97&#37;.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Since the package uses <a href="https://github.com/juliaintervals/IntervalArithmetic.jl">IntervalArithmetic.jl</a> as back-end for interval computations, it was only fair for me to also contribute in IntervalArithmetic.jl development. Hence, during the bonding period I tried to give my two cents to help the package achieve the IEEE-1788 standard compliance. Here is a summary of my contributions to IntervalArithmetic.jl</p>
+<ul>
+<li><p>I created the repository <a href="https://github.com/JuliaIntervals/ITF1788.jl">ITF1788.jl</a>. ITF1788 is a test suite &#40;available <a href="https://github.com/oheim/ITF1788">here</a>&#41; which can be used to verify an implementation of interval arithmetic is compliant with the standards. The tests are written in their own domain specific language called ITL. ITF1788.jl parses the tests written in ITL and generates julia code from them.</p>
+</li>
+</ul>
+<p>This tool will hopefully help achieve standard compliance one day.</p>
+<ul>
+<li><p>Using the above developed tool, I could generate all tests in Julia and opened <a href="https://github.com/JuliaIntervals/IntervalArithmetic.jl/issues/465">this meta issue</a> tracking what is missing to be compliant with the standard.</p>
+</li>
+<li><p>one <a href="https://github.com/JuliaIntervals/IntervalArithmetic.jl/pull/461">PR</a> fixing some issues with bare interval constructors &#40;merged&#41;</p>
+</li>
+<li><p>one <a href="https://github.com/JuliaIntervals/IntervalArithmetic.jl/pull/469">PR</a> fixing issues with decorated interval constructors &#40;still WIP&#41;</p>
+</li>
+<li><p>one <a href="https://github.com/JuliaIntervals/IntervalContractors.jl/pull/49">PR</a> fixing issues with reverse operations</p>
+</li>
+<li><p>one <a href="https://github.com/JuliaIntervals/IntervalArithmetic.jl/pull/483">PR</a> adding some missing operations for complex intervals</p>
+</li>
+</ul>
+<p>Hopefully, I will keep helping in contribution to IntervalArithmetic.jl, but now let us talk about the main beef: IntervalLinearAlgebra.jl</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fre0TKgLJwg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="tour_of_package_features"><a href="#tour_of_package_features" class="header-anchor">Tour of package features</a></h2>
+<h3 id="linear_systems"><a href="#linear_systems" class="header-anchor">Linear Systems</a></h3>
+<p><code>IntervalLinearAlgebra.jl</code> offers an user-friendly interface to solve interval linear systems with different algorithms and techniques. An interval system is a linear system \(\mathbf{Ax}=\mathbf{b}\) where \(\mathbf{A}\) and \(\mathbf{b}\) are interval matrix and vector, respectively. The main function to solve interval linear system is <code>solve</code>, which allows to choose the algorithm and the preconditioning mechanism. Here is a quick example</p>
+<pre><code class="language-julia">using IntervalLinearAlgebra, LazySets, Plots
+
+A &#61; &#91;2..4 -1..1;-1..1 2..4&#93;
+b &#61; &#91;-2..2, -1..1&#93;
+
+Xenclose &#61; solve&#40;A, b, GaussianElimination&#40;&#41;&#41;
+polytopes &#61; solve&#40;A, b, LinearOettliPrager&#40;&#41;&#41;
+
+plot&#40;UnionSetArray&#40;polytopes&#41;, ratio&#61;1, label&#61;&quot;solution set&quot;, legend&#61;:top&#41;
+plot&#33;&#40;IntervalBox&#40;Xenclose&#41;, label&#61;&quot;enclosure&quot;&#41;</code></pre>
+<img src="/posts/2021/08/figures/systems.png" alt="">
+<p>The <code>LinearOettliPrager</code> solver uses Oettli-Präger theorem to find an exact characterization of the solution set &#40;which is composed by an union of convex polytopes, which are internally represented using <a href="https://github.com/JuliaReach/LazySets.jl">LazySets.jl</a>&#41;. This is ok for lower dimensions, but as finding the solution set has exponential complexity, it becomes unfeasible in higher dimensions. For this reason there are polynomial time algorithms &#40;such as <code>GaussianElimination</code>&#41; to compute an interval enclosure of the solution set. It is good to notice, however, that this enclosure may be strictly larger than the hull of the solution set, whose computation also has exponential complexity.</p>
+<h3 id="matrix_multiplication"><a href="#matrix_multiplication" class="header-anchor">Matrix multiplication</a></h3>
+<p>The second goal of the project was to implement the Rump fast multiplication algorithm &#40;see <a href="">this paper</a> for more details&#41;. The main idea of Rump algorithm to to reduce interval matrix multiplication to floating point matrix multiplication, allowing to exploit optimised BLAS routines.  In the package, you can use the function <code>set_multiplication_mode</code> to set the algorithm you want to use. For example</p>
+<pre><code class="language-julia">set_multiplication_mode&#40;:fast&#41;</code></pre>
+<p>will set to use Rump fast multiplication algorithm &#40;default behavior&#41;. While</p>
+<pre><code class="language-julia">set_multiplication_mode&#40;:slow&#41;</code></pre>
+<p>will set to use the traditional matrix multiplication algorithm. With an interface to easily switch between multiplication modes, we can perform some benchmarks.</p>
+<p>The following picture gives an intuitive idea of the speed-up obtained. A more detailed analysis coming soon to the documentation&#33;</p>
+<img src="/posts/2021/08/figures/benchmark.png" alt="">
+<p>Rump multiplication algorithm is significantly faster than the traditional multiplication algorithm. As a price to pay, if both matrices are interval matrices &#40;that is both matrices have intervals with non-zero radius&#41;, then Rump algorithm may produce larger intervals than the traditional multiplication algorithm. This overestimate, which can be 50&#37; at maximum, is at the worst when the radii and centers of the intervals in the matrix have the same oder of magnitude. In the next picture, on the x-axis we have the mean ratio between radius and midpoint in absolute value. The y-axis measure the percentual overwidth of intervals obtained with Rump fast multiplication with respect to the traditional multiplication algorithm.</p>
+<img src="/posts/2021/08/figures/overestimates.png" alt="">
+<h3 id="eigenvalues"><a href="#eigenvalues" class="header-anchor">Eigenvalues</a></h3>
+<p>This was a stretch goal in the original proposal, but I&#39;m glad I got something done. At the moment, I have two PRs open regarding eigenvalues. </p>
+<p><a href="https://github.com/JuliaIntervals/IntervalLinearAlgebra.jl/pull/68">The first one</a> computes <em>rigorously</em> the eigenvalues and eigenvectors of a real matrix. That is, given a floating point matrix \(A\), it starts by approximated eigenvalues and eigenvectors \(\tilde{\lambda}\) and \(\tilde{\vec{x}}\) and returns intervals guaranteed to contain the true eigenvalue \(\lambda\) and an interval vector guaranteed to contain the true eigenvector \(\mathbf{x}\). Here is  a short example</p>
+<pre><code class="language-julia-repl">julia&gt; A &#61; Symmetric&#40;&#91;1 2;2 3&#93;&#41;
+2×2 Symmetric&#123;Int64, Matrix&#123;Int64&#125;&#125;:
+ 1  2
+ 2  3
+
+julia&gt; evals, evecs, cert &#61; verify_eigen&#40;A&#41;;
+
+julia&gt; evals
+2-element Vector&#123;Interval&#123;Float64&#125;&#125;:
+ &#91;-0.236068, -0.236067&#93;
+  &#91;4.23606, 4.23607&#93;
+
+julia&gt; evecs
+2×2 Matrix&#123;Interval&#123;Float64&#125;&#125;:
+ &#91;-0.850651, -0.85065&#93;  &#91;0.525731, 0.525732&#93;
+  &#91;0.525731, 0.525732&#93;  &#91;0.85065, 0.850651&#93;
+
+julia&gt; cert
+2-element Vector&#123;Bool&#125;:
+ 1
+ 1</code></pre>
+<p>The interval arrays <code>evals</code> and <code>evecs</code> contain bounds for the eigenvalues and eigenvectors of \(A\), respectively. The vector <code>cert</code> is a boolean array of certificates, if <code>cert&#91;i&#93; &#61;&#61; true</code>, then the bounds for the ith eigenvalue and eigenvector of \(A\) are guaranteed to contain the true eigenvalue and eigenvector.</p>
+<p><a href="https://github.com/JuliaIntervals/IntervalLinearAlgebra.jl/pull/77">The second one</a> is about bounding all eigenvalues of an interval matrix. Here is a quick example</p>
+<pre><code class="language-julia">A &#61; &#91;-3.. -2 4..5 4..6 -1..1.5;
+    -4.. -3 -4.. -3 -4.. -3 1..2;
+    -5.. -4 2..3 -5.. -4 -1..0;
+    -1..0.1 0..1 1..2 -4..2.5&#93;
+
+eigenbox&#40;A&#41;</code></pre>
+<pre><code class="language-julia">&#91;-8.8221, 3.4408&#93; &#43; &#91;-10.7497, 10.7497&#93;im</code></pre>
+<p>The function <code>eigenbox</code> takes a interval matrix and finds a complex interval that contains all \(\lambda\in\mathbb{C}\) that are eigenvalues of some \(A\in\mathbf{A}\). The following picture shows the eigenvalues of the previous matrix in the complex plane, obtained by Monte Carlo simulation, and the computed enclosure.</p>
+<img src="/posts/2021/08/figures/eigenvalues.png" alt="">
+<h2 id="future_goals"><a href="#future_goals" class="header-anchor">Future goals</a></h2>
+<p>Once the above mentioned PRs about eigenvalues are merged, the first version of the package will be released&#33; 🎉 This should happen within one week, stay tuned&#33;</p>
+<p>The main feature I want to add to the package is a solver for <em>parametric interval linear systems</em>. A parametric interval linear system has the form \(\mathbf{A(p)x}=\mathbf{b(p)}\), where \(\mathbf{p}\) is a set of parameters. For example</p>
+\[
+\begin{bmatrix}
+p_1&p_2\\
+p_2+1&p_1
+\end{bmatrix}\begin{bmatrix}x\\ y\end{bmatrix}=\begin{bmatrix}\frac{p_1+6p_2}{5}\\2p_1-6\end{bmatrix}
+\]
+<p>where \(p_1\in[2, 4]\) and \(p_2\in[-2, 1]\). What makes this kind of problem exciting is that just substituting the intervals in the equations and solving the normal interval linear system would lead to great overestimation, due to the so called <a href="https://en.wikipedia.org/wiki/Interval_arithmetic#Dependency_problem">dependency problem</a> that interval arithmetic suffers from. For this reason, some special algorithms are needed to treat these kind of problems. Parametric interval linear arise very often in engineering applications. For example, a system with the structure above could occur when solving a resistive circuit using nodal analysis or in Finite Element Method &#40;FEM&#41;.</p>
+<p>Other enhancement for the package could be</p>
+<ul>
+<li><p>extend the linear systems solver interface to work also with complex intervals</p>
+</li>
+<li><p>add algorithms for overdetermined linear systems</p>
+</li>
+<li><p>add specialized algorithms to verify eigenvalues and eigenvectors of floating point matrices with special structure &#40;symmetric, persymmetric, Toeplitz&#41;</p>
+</li>
+<li><p>bound eigenvectors of interval matrices</p>
+</li>
+<li><p>spectral decomposition of interval matrices</p>
+</li>
+<li><p>interval version of matrix functions &#40;square root, logarithm, exponential etc.&#41;</p>
+</li>
+</ul>
+<p>the ultimate goal of the package being <strong>Linear algebra done rigorously</strong>.</p>
+<h2 id="final_thoughts"><a href="#final_thoughts" class="header-anchor">Final thoughts</a></h2>
+<p>Over all, Google Summer of Code has been a lot of fun, I have learned a lot and greatly developed my coding and project management skills. The best thing was to learn some &quot;advanced&quot;&#40;?&#41; tips and tricks from my mentors that otherwise I couldn&#39;t have learned by just reading the julia documentation. I am very grateful to my mentors Marcelo Forets and David Sanders for their patience and support. Moreover, special thanks to the Julia community for offering a very welcoming environment. I am looking forward to collaborating in great projects with great people&#33;.</p>
+
+<figure style="text-align:center;">
+<img src="/posts/2021/06/figures/logo.png" style="padding:0; " alt=" Linear algebra done rigorously"/>
+<figcaption> Linear algebra done rigorously</figcaption>
+</figure>
+
+
+</div> <!-- article style -->
+
+
+<div class="container">
+  <footer class="site-footer">
+    <p class="powered-by">Built with <a href="https://franklinjl.org" target="_blank" rel="noopener">Franklin.jl</a> and the <a href="https://julialang.org" target="_blank" rel="noopener">Julia Programming Language</a>.
+
+      <span class="float-right" aria-hidden="true">
+        <a href="#" class="back-to-top">
+          <span class="button_icon">
+            <i class="fas fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+    </p>
+  </footer>
+</div>
+</div>
+  </div> <!--article container -->
+</article>
+
+
+<!-- CONTENT ENDS HERE -->
+     <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+     
+     <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+ 
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+
+  <script src="/libs/academic/academic.min.js"></script>
+
+  </body>
+</html>
