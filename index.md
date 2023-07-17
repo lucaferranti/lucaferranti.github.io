@@ -15,7 +15,7 @@
   job="Project Researcher",
   link="https://univaasa.fi",
   linkname="University of Vaasa",
-  gscholar="ss",
+  gscholar="https://scholar.google.fi/citations?user=RDc9XCMAAAAJ&h",
   github="https://github.com/lucaferranti",
   linkedin="https://www.linkedin.com/in/luca-ferranti/"
 }
@@ -24,15 +24,22 @@
 <!-- RIGHT COLUMN -->
 @@col-12,col-lg-8
 
-\begin{biography}{resume="/assets/ferranti_cv.pdf"}
+\begin{biography}{academic_resume="/assets/academic_cv.pdf", short_cv="/assets/short_cv.pdf"}
   > *My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humour and some style.* - Maya Angelou
-  I am a computer science PhD student at the University of Vaasa. My research interests lie in computational mathematics and its application to engineering domains. Particularly, I have experience in computational algebraic geometry and polynomial solvers optimisation. Application domains I have experience with include computer vision and satellite positioning.
 
-  If you want to collaborate with me or simply fund my research, do not hesitate to contact me.  
+  Open source, open science, open education and scientific computing enthusiast!
+
+  I have strong experiene in software development in Julia, both in industry and academia.
+
+  Broadly speaking, my research interests lie at the intersection of applied mathematics, computer science, and their application to engineering domains.
+  I aim to bridge the gap between engineering and mathematicians, by exploring new computational methods for complex real world solutions.
+
+  I am always looking to learn more and apply my computational skills to new application domains. If you would like to chat with me, get in touch!
+
 \end{biography}
 
 \shortcv{
-  interests=["Computational Mathematics", "Algebraic Geometry", "Satellite Positioning", "Computer Vision"],
+  interests=["Scientific computing", "Computer algebra", "Automated reasoning", "Interval methods", "Fuzzy logic"],
   education=[
     ("PhD in Computer Science, ongoing", "University of Vaasa"),
     ("M.Sc. (with honours) in Electrical Engineering, 2019", "Tampere University"),
@@ -56,9 +63,9 @@
 
 \end{section}-->
 
-\begin{section}{name="News", class="wg-pages"}
+\begin{section}{name="Latest blogs", class="wg-pages"}
 
-\sectionheading{"News", class="col-12 col-lg-4"}
+\sectionheading{"Recent blogposts", class="col-12 col-lg-4"}
 
 @@col-12,col-lg-8
 
@@ -80,12 +87,24 @@
 @@col-12,col-lg-8
 
 \experience{
+  title="Julia Software Developer",
+  company="PlantingSpace (freelancer)",
+  descr="""
+  Developing algorithms in Julia for code generation, symbolic computations and automated reasoning. Tutoring new joiners in the use of Julia.
+  """,
+  from="Sep 2022",
+  to="Present",
+  location="remote",
+  active=true
+}
+\experience{
   title="Project Researcher",
   company="University of Vaasa",
   descr="""
 
   * research on computational methods for positioning
-  * teaching a graduate-level course on computer vision
+  * Project manager of INCUBATE, a research project for positioning with small satellites. Coordinating a team with 20 researchers across 4 Finnish institutions. 
+  * teaching 2 graduate level classes and supervised one master thesis
   * March 2020 - April 2020: visiting researcher in Lund University
     """,
   from="Jan 2020",

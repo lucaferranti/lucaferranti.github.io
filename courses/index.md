@@ -10,6 +10,12 @@ TBD
 
 ## Current teaching
 
+- **Fuzzy Logic**: graduate level, University of Vaasa. I have taught this class in 2021.
+  For the 2024 implementation, I am completely redesigning the course from scratches.
+  The goal is simple but ambitious: make it a fully open course that everyone around the world can access.
+  The course will have an open interactive website with recorded video lectures.
+  Teaching will also use my own software `FuzzyLogic.jl`.
+
 - **Computer Vision**, 2021-, graduate level, University of Vaasa: responsible for exercises and assignment. I codesigned the course from scratches for its first implementation. I prepared the exercises and assignments material and model solutions for them.
 
 ## Previous teaching
