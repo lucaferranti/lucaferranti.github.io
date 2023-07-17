@@ -99,24 +99,42 @@
       <div class="article-container">
         <div class="article-style">
   
-<div class="franklin-content"><p>Broadly speaking, my research interest lies in computational mathematics. I like to turn abstract math into working efficient code and apply it to solve real problems in various engineering domains, such as computer vision or positioning. I have particular experience with computational algebraic geometry and optimized polynomial solvers generation. My language-of-choice is Julia, but I am also comfortable with Python, Matlab, C and C&#43;&#43;. Currently, I am working on numerical algorithms design for Low Earth Orbit satellites positioning.</p>
-<p>You can download my full list of publications here. &#40;link to come&#41;</p>
+<div class="franklin-content"><p>Broadly speaking, my research interest lies in computational mathematics. I like to turn abstract math into working efficient code and apply it to solve real problems in various engineering domains, such as computer vision, positioning, and robotics. My language-of-choice is Julia, but I am also comfortable with Python, Matlab, Haskell, C and C&#43;&#43;. Topics I have worked with include: computational algebraic geometry, geometric computer vision, algorithms for positioning, interval arithmetic, automated reasoning and fuzzy logic.</p>
+<p>I strongly believe research software is a fundamental part of research, and I believe open-science and open-education are fundamental values. Combining the two, I believe writing good open-source research software is just as important as writing the paper describing the results. I try to promote these values as much as I can, maybe one day it will make the difference.</p>
+<p>You can find my full list of publication in my academic cv.</p>
 <p>Here some highlights of my latest research outputs</p>
-<ol><li><a href="#Conferences">Conferences</a></li>
+<ol><li><a href="#Papers">Papers</a></li>
 <li><a href="#Talks">Talks</a></li>
 <li><a href="#Thesis">Thesis</a></li>
 </ol>
-<section id="publications" class="home-section wg-pages"><div class=container, id="Conferences">
+<section id="publications" class="home-section wg-pages"><div class=container, id="Papers">
 <div class=row>
     <div class="col-12 col-lg-4 section-heading">
-        <u><h2>Conferences</h2></u>
+        <u><h2>Papers</h2></u>
     </div>
     <div class="col-12 col-lg-8">
 <div class="media stream-item">
         <div class=media-body>
-            <a href="https://arxiv.org/abs/2108.00667" class=summary-link>
+            <a href="https://ieeexplore.ieee.org/abstract/document/9746922" class=summary-link>
+                <h3 class="article-title mb-0 mt-0">Multiple Offsets Multilateration: A New Paradigm for Sensor Network Calibration with Unsynchronized Reference Nodes</h3>
+                <div class="stream-meta article-metadata" style="font-size: 12px">L.Ferranti, K.Åström, M.Oskarsson, J.Boutellier, J.Kannala, 2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2022, </div>
+                <div class=article-style><p style="font-size: 12px;">Positioning using wave signal measurements is used in several applications, such as GPS systems, structure from sound and Wifi based positioning. Mathematically, such problems require the computation of the positions of receivers and/or transmitters as well as time offsets if...</p></div>
+            </a>
+            <div class=btn-links>
+                <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="/bibtex/ferranti2022mom/" target=_blank rel=noopener>
+<i class="fas fa-quote-right"></i></a>
+
+                <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2205.11299" target=_blank rel=noopener>
+arxiv</a>
+
+            </div>
+        </div>
+</div>
+<div class="media stream-item">
+        <div class=media-body>
+            <a href="https://ieeexplore.ieee.org/document/9616184" class=summary-link>
                 <h3 class="article-title mb-0 mt-0">Homotopy Continuation for Sensor Networks Self-Calibration</h3>
-                <div class="stream-meta article-metadata" style="font-size: 12px">L.Ferranti, K.Åström, M.Oskarsson, J.Boutellier, J.Kannala, arXiv:2005.10298, 2021, accepted to EUSIPCO2021</div>
+                <div class="stream-meta article-metadata" style="font-size: 12px">L.Ferranti, K.Åström, M.Oskarsson, J.Boutellier, J.Kannala, 2021 IEEE European Signal Processing Conference (EUSIPCO), 2021, </div>
                 <div class=article-style><p style="font-size: 12px;">Given a sensor network, TDOA self-calibration aims at simultaneously estimating the positions of receivers and transmitters, and transmitters time offsets. This can be formulated as a system of polynomial equations. Due to the elevated number of unknowns and the nonlinearity...</p></div>
             </a>
             <div class=btn-links>
@@ -148,9 +166,9 @@ arxiv</a>
 </div>
 <div class="media stream-item">
         <div class=media-body>
-            <a href="https://arxiv.org/abs/2010.00347" class=summary-link>
+            <a href="https://ieeexplore.ieee.org/document/9413234" class=summary-link>
                 <h3 class="article-title mb-0 mt-0">Can You Trust Your Pose? Confidence Estimation in Image-Based Localization</h3>
-                <div class="stream-meta article-metadata" style="font-size: 12px">L.Ferranti, X.Li, J.Boutellier, J.Kannala, arXiv:2010.00347, 2020, accepted to ICPR 2020</div>
+                <div class="stream-meta article-metadata" style="font-size: 12px">L.Ferranti, X.Li, J.Boutellier, J.Kannala, 2020 International Conference on Pattern Recognition (ICPR), 2020, </div>
                 <div class=article-style><p style="font-size: 12px;">Camera pose estimation in large-scale environments is still an open question and, despite recent promising results, it may still fail in some situations. The research so far has focused on improving subcomponents of estimation pipelines, to achieve more accurate poses....</p></div>
             </a>
             <div class=btn-links>
@@ -184,6 +202,45 @@ arxiv</a>
         <u><h2>Talks</h2></u>
     </div>
     <div class="col-12 col-lg-8">
+<div class="media stream-item">
+        <div class=media-body>
+            <a href="https://www.youtube.com/watch?v=q_08LE4UOU8" class=summary-link>
+                <h3 class="article-title mb-0 mt-0">Automated Geometric Theorem Proving in Julia</h3>
+                <div class="stream-meta article-metadata" style="font-size: 12px">Luca Ferranti, JuliaCon 2022, 28 Jul 2022, </div>
+                <div class=article-style><p style="font-size: 12px;"></p></div>
+            </a>
+            <div class=btn-links>
+                
+                
+            </div>
+        </div>
+</div>
+<div class="media stream-item">
+        <div class=media-body>
+            <a href="https://youtu.be/-1JqQ9MN2tg" class=summary-link>
+                <h3 class="article-title mb-0 mt-0">Status of IntervalLinearAlgebra.jl</h3>
+                <div class="stream-meta article-metadata" style="font-size: 12px">Luca Ferranti, JuliaReach and JuliaIntervals Days 3, 10 Dec 2021, </div>
+                <div class=article-style><p style="font-size: 12px;"></p></div>
+            </a>
+            <div class=btn-links>
+                
+                
+            </div>
+        </div>
+</div>
+<div class="media stream-item">
+        <div class=media-body>
+            <a href="https://youtu.be/oHsLmaHSHd8" class=summary-link>
+                <h3 class="article-title mb-0 mt-0">Package development in Julia</h3>
+                <div class="stream-meta article-metadata" style="font-size: 12px">Luca Ferranti, Nordic-RSE Seminar Series, 18 Aug 2021, </div>
+                <div class=article-style><p style="font-size: 12px;"></p></div>
+            </a>
+            <div class=btn-links>
+                
+                
+            </div>
+        </div>
+</div>
 <div class="media stream-item">
         <div class=media-body>
             <a href="https://youtu.be/fre0TKgLJwg" class=summary-link>
