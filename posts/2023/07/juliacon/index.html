@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Luca Ferranti">
+  <meta name="description" content="fun with scientific computing">
+
+  <!--<meta property="og:image" content="https://raw.githubusercontent.com/lucaferranti/lucaferranti.github.io/main/_assets/img/cvkuva.jpeg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1238" />
+  <meta property="og:image:height" content="1483" />
+  -->
+  <meta name="theme-color" content="#2962ff">
+
+  <!-- google thumbnail -->
+  <meta name="thumbnail" content="https://raw.githubusercontent.com/lucaferranti/lucaferranti.github.io/main/_assets/img/cvkuva.jpeg" />
+
+
+  <link
+  rel=preconnect
+  href="https://fonts.gstatic.com"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"
+  crossorigin=anonymous>
+
+<link
+  rel=stylesheet
+  href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"
+  crossorigin=anonymous>
+
+<!-- locally served -->
+<link rel=stylesheet href="/libs/academic/academic.min.css">
+
+<link rel=stylesheet href="/css/extra.css">
+
+<!-- highlight + katex + plotly -->
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+
+   <title>Open source around the world stop 2: JuliaCon</title>  
+</head>
+
+<body id=top data-spy="scroll" data-offset="70" data-target=#navbar-main>
+
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+  <div class=container>
+    <!-- Main name -->
+    <div class="d-none d-lg-inline-flex">
+      <a class=navbar-brand href="/">L. Ferranti</a>
+    </div>
+    <!-- Button for narrow mode -->
+    <button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+    <!-- Main name for mobile mode -->
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class=navbar-brand href="/">L. Ferranti</a>
+    </div>
+    <!-- Menu items -->
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
+      <ul class="navbar-nav d-md-inline-flex">
+        <li class=nav-item><a class=nav-link href="/#posts" data-target=#posts><span>News</span></a></li>
+        <li class=nav-item><a class=nav-link href="/research/"><span>Research</span></a></li>
+        <li class=nav-item><a class=nav-link href="/courses/"><span>Teaching</span></a></li>
+        <li class=nav-item><a class=nav-link href="/posts/"><span>Blog</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <span class="js-widget-page d-none"></span>
+
+  
+    <article class=article>
+      <div class="article-container pt-3">
+        <h1>Open source around the world stop 2: JuliaCon</h1>
+      </div>
+      
+
+      <div class="article-container">
+        <div class="article-style">
+  
+<div class="franklin-content"><p>My open source trip around the world continues, 3 trips in 3 continents in 30 days. It is time for the second one, a very special one.</p>
+<h2 id="juliacon_boston_us"><a href="#juliacon_boston_us" class="header-anchor">JuliaCon, Boston, US.</a></h2>
+<p>The second continent is America and the second stop of my tour is nothing less than <a href="https://juliacon.org">JuliaCon 2023</a> itself, this year hosted at MIT, in Boston, US.</p>
+<p>Pretty much everyone who knows me knows that I love programming in Julia. I started getting involved in Julia in late 2019 and gradually became more and more active in the julia community. I started with Julia season of docs, writing documentation about interval arithmetic. Next, I was twice in the Google summer of code program, coding interval arithmetic stuff in Julia. Now, I work as Julia software developer, use Julia in my research, have given <a href="https://www.youtube.com/watch?v&#61;oHsLmaHSHd8">a tutorial</a> about developing libraries in Julia, created a <a href="https://julia-users-helsinki.github.io/">julia community in Helsinki</a> and even organized a <a href="https://juliareach.github.io/juliareach-days-3/">small conference</a> about interval arithmetic and reachabiltiy analysis in Julia&#33;</p>
+<p>So, summa summarum, I consider myself pretty enthusiast. Now, you probably noticed the date when I started, late 2019. Unfortunately, we all know what that means, COVID&#33; So yeah, so far my Julia involvement has been remote, which is why I was very excited about finally meeting people at JuliaCon&#33;</p>
+<h3 id="arriving_to_boston"><a href="#arriving_to_boston" class="header-anchor">Arriving to Boston</a></h3>
+<p>The flight was surprisingly short and painless. Arrived to Boston, I took a cab to MIT, had a look around and prepared to go to my airbnb. Accoring to google maps, the distance was 4.5 km, it was hot and humid, nevertheless I spoke my famous last words <em>I can walk that far</em>. And make no mistake, I did it&#33; After getting to the airbnb and taking a shower I decided to make some sightseeing and went to Harvard &#40;I wonder why people say it is hard to get it, the doors are always open&#41;.</p>
+<h3 id="juliacon"><a href="#juliacon" class="header-anchor">JuliaCon</a></h3>
+<p>JuliaCon was in the very funny-looking computing science building of MIT. Arrived there, I registered and got some swag &#40;t-shirt and stickers&#41;.</p>
+<p><img src="/posts/2023/07/mit_building.jpeg" alt="" /></p>
+<p>The event was 3 days long and there were a lot of interested talks, indeed a lot of times I felt like the Buridan&#39;s ass, stuck between lecture rooms.</p>
+<p>Some highlights:</p>
+<ul>
+<li><p>The workshop about <a href="https://genieframework.com/">Genie.jl</a> was very interesting. Coming myself from a compuational background, I find refreshing to see the Julia community going beyond scientific computing and being used also in web development. I found Genie very intriguing and I hope to use it myself soon too.</p>
+</li>
+<li><p>Stephen Wolfram was a keynote speaker.</p>
+</li>
+<li><p>The status of Julia was very interesting&#33; A lot of very cool features coming in the upcoming julia release &#40;1.10&#41;, a completely new compiler-fronted &#40;<a href="https://github.com/JuliaLang/JuliaSyntax.jl">JuliaSyntax.jl</a>&#41; with better parsing error messages, shorter and more friendly stacktraces. Huge improvements in latency and precompilation. Indeed, I think people complaining about &quot;Julia being slow at the beginning&quot; heard that a few years ago and haven&#39;t updated their belief. If you are one of those people, give julia another try, you&#39;ll be amazed&#33;</p>
+</li>
+<li><p>In parallel to JuliaCon, there was a <a href="https://math.mit.edu/events/ase60celebration/">special conference</a>, celebrating Alan Edelman 60th birthday. This had a lot of talks related to numerical linear algebra, which was very cool. I also got to meet some &quot;rock stars&quot; like Gilbert Strang and Nick Trefethen&#33;</p>
+</li>
+<li><p>One JuliaCon was not enough, this year we have 2&#33;&#33; Yes, there is a second one in December in Eindhoven, check it out <a href="https://juliacon.org/local/eindhoven2023/">here</a>. I will probably be there too.</p>
+</li>
+</ul>
+<p>Overall, there was a very cool atmosphere, with a lot of interesting chats. Everyone was very humble and friendly. This is a very cool aspect of open-source, everyone is so enthusiast and dedicated&#33;</p>
+<h3 id="my_talk_fuzzylogicjl"><a href="#my_talk_fuzzylogicjl" class="header-anchor">My talk: FuzzyLogic.jl</a></h3>
+<p>I also had my talk, where I presented <a href="https://github.com/lucaferranti/FuzzyLogic.jl">FuzzyLogic.jl</a>. If you don&#39;t know what that is, it is a library for automated reasoning using fuzzy logic. In a nutshell, while traditional logic is binary &#40;true or false, zero or one&#41;, in fuzzy logic the truth value is an number from the interval <code>&#91;0, 1&#93;</code>. This allows to model uncertainty, particularly vagueness. In a way, fuzzy logic resembles the way humans think. If we think of an imprecise concept, such as <em>being tall</em>, it cannot be defined exactly. When is someone tall? Someone 2m is definetely tall, what if someone is 1.8? or 1.7? or 1.6? Even if I choose an arbitrary threshold for &quot;being tall&quot;, does it make sense to say someone is &quot;not tall&quot; if they are 1mm shorter? Instead, with fuzzy logic, the truth value of the proposition &quot;being tall&quot; smoothly goes from 0 to 1 as the height increases.</p>
+<p>Surprisingly, I prepared my slides as early as 2h before my talk, however, before walking into the room, I saw a demo of a controller keeping a <a href="https://en.wikipedia.org/wiki/Furuta_pendulum">furuta pendulum</a> in equilibrium. I thought, I can do that with my library, and 1h before my talk I updated the slides with a small demo of a fuzzy controller for an inverted pendulum. The very cool thing is that I could almost effortlessly plug my fuzzy controller into <a href="https://github.com/SciML/DifferentialEquations.jl">DifferentialEquations.jl</a> and it just worked. Julia composability is so cool&#33;</p>
+<p>Here is my talk if you want to watch it &#40;Note my bright yellow belt, apparently that is now &quot;my thing&quot; in the Julia community&#41;. You can also find the slides <a href="https://github.com/lucaferranti/talks/juliacon2023">here</a>.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CrIAsPmG2a0?start=18217" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>I am pretty happy with how the talk went, I had good time management, ok pace and managed to fit perfectly the given time slot. There were some nice questions from the audience and I chatted with some people before and after about the library. FuzzyLogic.jl even got its first citation&#33; Shout out to <a href="https://github.com/lrnv/Copulas.jl">Copulas.jl</a>.</p>
+<p><img src="/posts/2023/07/fuzzy_logic_citation.jpeg" alt="" /></p>
+<h3 id="hackathon"><a href="#hackathon" class="header-anchor">Hackathon</a></h3>
+<p>The last day was the hackathon&#33; A very cool event where cool people sit together and code cool stuff&#33; It was very fun to see the atmosphere and enthusiasm.</p>
+<p>Personally, I kept working with a friend from the Pluto dev on the <a href="https://github.com/juliapluto/computational-thinking-template">computational thinking template</a> &#40;see also my <a href="/posts/2023/07/graz">previous blog post</a>&#41;. We went through the process of setting up a server and deploying the website, identified pain points and made some progress in making the process smoother. Overall pretty productive&#33;</p>
+<h3 id="acknowledgements"><a href="#acknowledgements" class="header-anchor">Acknowledgements</a></h3>
+<p>I want to thank my PhD supervisors, Jani Boutellier and Heidi Kuusniemi at University of Vaasa, for being supportive with my open-source scientific computing &quot;hobbies&quot;, and especially for paying my trip to JuliaCon.</p>
+
+</div> <!-- article style -->
+
+
+<div class="container">
+  <footer class="site-footer">
+    <p class="powered-by">Built with <a href="https://franklinjl.org" target="_blank" rel="noopener">Franklin.jl</a> and the <a href="https://julialang.org" target="_blank" rel="noopener">Julia Programming Language</a>.
+
+      <span class="float-right" aria-hidden="true">
+        <a href="#" class="back-to-top">
+          <span class="button_icon">
+            <i class="fas fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+    </p>
+  </footer>
+</div>
+</div>
+  </div> <!--article container -->
+</article>
+
+
+<!-- CONTENT ENDS HERE -->
+    
+    
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+
+  <script src="/libs/academic/academic.min.js"></script>
+
+  </body>
+</html>
